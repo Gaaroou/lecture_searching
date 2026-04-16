@@ -95,6 +95,8 @@ def main():
     plt.title("Ukázkový graf měření")
     plt.show()
 
+
+
     pass
 
 
