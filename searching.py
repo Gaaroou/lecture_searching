@@ -1,5 +1,7 @@
 import os
 import json
+from distutils.command.install import sys_key
+from operator import index
 
 # get current working directory path
 cwd_path = os.getcwd()
@@ -33,15 +35,34 @@ def linear_search(sekvence, hledane_cislo):
     slov["count"] = count
     return slov
 
+def binary_search(sekvence, hledane_cislo):
+    left = 0
+    right = int(len(sekvence) - 1)
+    while True:
+        idx_pul = int(len(sekvence[left:right]) / 2)
+        if sekvence[idx_pul] == hledane_cislo:
+            return idx_pul
+        elif sekvence[idx_pul] < hledane_cislo:
+            left = idx_pul+1
+        elif sekvence[idx_pul] > hledane_cislo:
+            right = idx_pul-1
+        else:
+            return None
+
 def main():
+    filename = "sequential.json"
+    data = read_data(filename, "unordered_numbers")
+    # print(data)
+
+    search = linear_search(data, 5)
+    # print(search)
+
+    data2 = read_data(filename, "ordered_numbers")
+    b_search = binary_search(data2, 2)
+    print(data2)
+    print(b_search)
     pass
 
 
 if __name__ == '__main__':
     main()
-    filename = "sequential.json"
-    data = read_data(filename, "unordered_numbers")
-    print(data)
-
-    search = linear_search(data,5)
-    print(search)
