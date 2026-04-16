@@ -1,7 +1,5 @@
 import os
 import json
-from distutils.command.install import sys_key
-from operator import index
 
 # get current working directory path
 cwd_path = os.getcwd()
